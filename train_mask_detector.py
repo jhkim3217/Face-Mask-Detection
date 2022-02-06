@@ -26,7 +26,7 @@ INIT_LR = 1e-4
 EPOCHS = 20
 BS = 32
 
-DIRECTORY = r"C:\Mask Detection\CODE\Face-Mask-Detection-master\dataset"
+DIRECTORY = "dataset"
 CATEGORIES = ["with_mask", "without_mask"]
 
 # grab the list of images in our dataset directory, then initialize
@@ -39,13 +39,13 @@ labels = []
 for category in CATEGORIES:
     path = os.path.join(DIRECTORY, category)
     for img in os.listdir(path):
-    	img_path = os.path.join(path, img)
-    	image = load_img(img_path, target_size=(224, 224))
-    	image = img_to_array(image)
-    	image = preprocess_input(image)
-
-    	data.append(image)
-    	labels.append(category)
+        img_path = os.path.join(path, img)
+        image = load_img(img_path, target_size=(224, 224)) 
+        image = img_to_array(image) 
+        image = preprocess_input(image)
+        
+        data.append(image)
+        labels.append(category)
 
 # perform one-hot encoding on the labels
 lb = LabelBinarizer()
